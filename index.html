@@ -32,9 +32,18 @@
           ></div>
         </div>
       </section>
+      <section class="container" v-if="winner">
+        <h2>Game Over</h2>
+        <h3 v-if="winner==='draw'">It's a draw!</h3>
+        <h3 v-if="winner==='lost'">You lost :(</h3>
+        <h3 v-else-if="winner==='win'">You won :)</h3>
+      </section>
       <section id="controls">
         <button @click="attackMonster">ATTACK</button>
-        <button :disabled ="currentRound % 3 !== 0" @click="specialAttackMonster">
+        <button
+          :disabled="currentRound % 3 !== 0"
+          @click="specialAttackMonster"
+        >
           SPECIAL ATTACK
         </button>
         <button @click="healPlayer">HEAL</button>
