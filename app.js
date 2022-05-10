@@ -9,6 +9,8 @@ const app = Vue.createApp({
       monsterHealth: 100,
       currentRound: 0,
       winner: null,
+      // TODO: Finishing the Core Functionality- Battle Log
+      logMessages: []
     };
   },
   computed: {
