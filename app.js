@@ -12,38 +12,46 @@ const app = Vue.createApp({
     };
   },
   computed: {
-    MonsterBarStyles() {
+    monsterBarStyles() {
+      if (this.monsterHealth < 0) {
+        return { width: "0%" };
+      }
       return { width: this.monsterHealth + "%" };
     },
-    PlayerBarStyles() {
+    playerBarStyles() {
+      if (this.playerHealth < 0) {
+        return { width: "0%" };
+      }
       return { width: this.playerHealth + "%" };
     },
   },
   watch: {
     playerHealth(value) {
       if (value <= 0 && this.monsterHealth <= 0) {
-        //draw
         this.winner = "draw";
       } else {
         if (value <= 0) {
-          //monster wins
-          this.winner = "lost"
+          this.winner = "lost";
         }
       }
     },
     monsterHealth(value) {
       if (value <= 0 && this.playerHealth <= 0) {
-        //draw
-        this. winner = "draw";
+        this.winner = "draw";
       } else {
         if (value <= 0) {
-          //monster lost
           this.winner = "win";
         }
       }
     },
   },
   methods: {
+    startGame() {
+      this.playerHealth = 100;
+      this.monsterHealth = 100;
+      this.currentRound = 0;
+      this.winner = null;
+    },
     attackMonster() {
       this.currentRound++;
       const attackValue = getRandomValue(12, 5);

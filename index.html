@@ -20,7 +20,7 @@
       <section id="monster" class="container">
         <h2>Monster Health</h2>
         <div class="healthbar">
-          <div class="healthbar__value" :style="MonsterBarStyles"></div>
+          <div class="healthbar__value" :style="monsterBarStyles"></div>
         </div>
       </section>
       <section id="player" class="container">
@@ -28,7 +28,7 @@
         <div class="healthbar">
           <div
             class="healthbar__value"
-            :style="{width:playerHealth + '%'}"
+            :style="playerBarStyles"
           ></div>
         </div>
       </section>
@@ -37,6 +37,7 @@
         <h3 v-if="winner==='draw'">It's a draw!</h3>
         <h3 v-if="winner==='lost'">You lost :(</h3>
         <h3 v-else-if="winner==='win'">You won :)</h3>
+        <button @click="startGame">START GAME</button>
       </section>
       <section id="controls">
         <button @click="attackMonster">ATTACK</button>
