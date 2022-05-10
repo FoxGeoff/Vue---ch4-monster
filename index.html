@@ -39,7 +39,7 @@
         <h3 v-else-if="winner==='win'">You won :)</h3>
         <button @click="startGame">START GAME</button>
       </section>
-      <section id="controls">
+      <section id="controls"v-else>
         <button @click="attackMonster">ATTACK</button>
         <button
           :disabled="currentRound % 3 !== 0"
